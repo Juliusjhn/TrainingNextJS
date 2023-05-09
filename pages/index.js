@@ -3,7 +3,7 @@ import CardComponent from "@app/src/components/card.component";
 
 export default function Home(props){
   return (
-      <div className={'h-screen w-full bg-white bg-fixed '}>
+      <div className={'h-screen w-full bg-white bg-fixed'}>
         <h1 className="text-warning">Home</h1>
           {/*<div className={'mx-auto max-w-[900px] flex flex-col'}>*/}
           {/*    {*/}

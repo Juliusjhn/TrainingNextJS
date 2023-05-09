@@ -1,45 +1,48 @@
 import axios from "axios";
+import CardComponent from "@app/src/components/card.component";
 
-/**
- *
- * @param {Object} props
- * @param {Array} props.data
- * @returns {JSX.Element}
- * @constructor
- */
 export default function Home(props){
-    console.log(props.data);
   return (
       <div className={'h-screen w-full bg-white bg-fixed '}>
         <h1>Home</h1>
-          <div className={'mx-auto max-w-[900px] flex flex-col'}>
-              {
-                  props.data.map((item)=> {
-                      return (
-                          <div className={'text-black bg-gray-100 rounded-xl mb-4 flex flex-col'}>
-                             <p>ID = {item.id}</p>
-                             {/*<p>userID = {item.userId}</p>*/}
-                             {/*<p>Title = {item.title}</p>*/}
-                             {/*<p>Body = {item.body}</p>*/}
-                          </div>
-                      )
-                  })
-              }
-          </div>
+          {/*<div className={'mx-auto max-w-[900px] flex flex-col'}>*/}
+          {/*    {*/}
+          {/*        props.data.map((item)=> {*/}
+          {/*            return (*/}
+          {/*                <div className={'text-black bg-gray-100 rounded-xl mb-4 flex flex-col'}>*/}
+          {/*                   <p>ID = {item.id}</p>*/}
+          {/*                   /!*<p>userID = {item.userId}</p>*!/*/}
+          {/*                   /!*<p>Title = {item.title}</p>*!/*/}
+          {/*                   /!*<p>Body = {item.body}</p>*!/*/}
+          {/*                </div>*/}
+          {/*            )*/}
+          {/*        })*/}
+          {/*    }*/}
+          {/*</div>*/}
+          <CardComponent
+              id={2}
+              thumbnail={'/google-logo-lg.png'}
+              title={'Ini Title custom children'}
+              description={'Ini deskripsinya'}
+          >
+              <div>
+                  <h4 className={'text-black'}>ini custom children</h4>
+              </div>
+          </CardComponent>
+
+
+          <CardComponent
+              id={1}
+              thumbnail={'/google-logo.png'}
+              title={'Ini Title'}
+              description={'Ini deskripsinya'}
+          />
+
+
       </div>
   )
 }
-//
-// export async function getStaticPaths(){
-//
-// }
-// export async function getStaticProps(ctx){
-//     return {
-//         props : {
-//             data: []
-//         }
-//     }
-// }
+
 
 export async function getServerSideProps(ctx){
     let query = ctx.query;

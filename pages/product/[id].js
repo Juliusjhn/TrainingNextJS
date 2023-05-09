@@ -14,7 +14,7 @@ export default function Multi(props){
                     typeof(data) === 'object' &&
                     // Object?.keys(data).length > 0 &&
                     Object
-                        .entries(data)
+                        .entrfies(data)
                         .map(
                             ([key,value])=> {
                                 return <div>

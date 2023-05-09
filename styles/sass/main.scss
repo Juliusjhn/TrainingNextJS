@@ -1,1 +1,13 @@
-@import "base/index";
+@import "./utilities/variables";
+
+.text{
+  &-primary{
+    color: $color-cyan;
+  }
+  &-warning{
+    color: $color-orange;
+  }
+  &-danger{
+    color: $color-red;
+  }
+}

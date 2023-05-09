@@ -4,7 +4,7 @@ import CardComponent from "@app/src/components/card.component";
 export default function Home(props){
   return (
       <div className={'h-screen w-full bg-white bg-fixed '}>
-        <h1>Home</h1>
+        <h1 className="text-warning">Home</h1>
           {/*<div className={'mx-auto max-w-[900px] flex flex-col'}>*/}
           {/*    {*/}
           {/*        props.data.map((item)=> {*/}
@@ -19,24 +19,26 @@ export default function Home(props){
           {/*        })*/}
           {/*    }*/}
           {/*</div>*/}
-          <CardComponent
-              id={2}
-              thumbnail={'/google-logo-lg.png'}
-              title={'Ini Title custom children'}
-              description={'Ini deskripsinya'}
-          >
-              <div>
-                  <h4 className={'text-black'}>ini custom children</h4>
-              </div>
-          </CardComponent>
+          {/*<CardComponent*/}
+          {/*    id={2}*/}
+          {/*    thumbnail={'/google-logo-lg.png'}*/}
+          {/*    title={'Ini Title custom children'}*/}
+          {/*    description={'Ini deskripsinya'}*/}
+          {/*>*/}
+          {/*    <div>*/}
+          {/*        <h4 className={'text-black'}>ini custom children</h4>*/}
+          {/*    </div>*/}
+          {/*</CardComponent>*/}
 
 
-          <CardComponent
-              id={1}
-              thumbnail={'/google-logo.png'}
-              title={'Ini Title'}
-              description={'Ini deskripsinya'}
-          />
+          {/*<div className={'custom'}>*/}
+          {/*    <CardComponent*/}
+          {/*        id={1}*/}
+          {/*        thumbnail={'/google-logo.png'}*/}
+          {/*        title={'Ini Title'}*/}
+          {/*        description={'Ini deskripsinya'}*/}
+          {/*    />*/}
+          {/*</div>*/}
 
 
       </div>

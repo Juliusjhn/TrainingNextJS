@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
             className={
             'app-main bg-fixed bg-white w-full min-h-screen'
         }>
-            <Navbar logo={'/google-logo.png'}/>
+            {/*<Navbar logo={'/google-logo.png'}/>*/}
             <main className={'pt-20'}>
                 <Component {...pageProps} />
             </main>

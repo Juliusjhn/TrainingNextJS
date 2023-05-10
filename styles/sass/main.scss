@@ -1,6 +1,15 @@
 @import "./utilities/variables";
 @import "./utilities/mixin";
 
+
+//test tailwind
+@import "tailwindcss/base.css";
+@import "tailwindcss/variants.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+
+
+
 .text{
   &-primary{
     color: $color-cyan;

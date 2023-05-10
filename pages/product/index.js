@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
@@ -20,7 +21,9 @@ export default function Product(){
 
                 if(
                     response?.data?.data &&
-                    Array.isArray(response?.data?.data)
+                    Array.isArray(
+                        response?.data?.data
+                    )
                 ){
                     setData([
                         ...response?.data?.data

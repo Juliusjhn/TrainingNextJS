@@ -11,7 +11,7 @@ export default function Navbar(props){
     return (
         <header
             className={
-            'w-full top-0 h-20 bg-white'
+            'w-full fixed top-0 h-20 bg-white'
             }
         >
             <div className="mx-auto max-w-[1280px]">

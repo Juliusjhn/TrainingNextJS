@@ -20,12 +20,14 @@ export default NextAuth({
                 }
             },
             async authorize(credentials,req){
+
                 const [
                     err ,
                     data
                 ] = await new AuthController({
                     fields: credentials
                 }).signIn();
+
 
                 if(err) return false;
                 if(!data) return false;

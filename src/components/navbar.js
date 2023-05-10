@@ -6,6 +6,8 @@ import Link from "next/link";
  */
 export default function Navbar(props){
     let { logo } = props
+
+
     return (
         <header
             className={

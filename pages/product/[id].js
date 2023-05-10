@@ -1,9 +1,11 @@
+
 import axios from "axios";
 
 export default function Multi(props){
     let {
         data = {}, id
     } = props
+
     return(
         <div>
             <h1>Product Detail - {id}</h1>

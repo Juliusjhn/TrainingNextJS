@@ -1,6 +1,7 @@
 import nc from 'next-connect';
 import ErrorHandler from "@app/src/handlers/error.handler";
 import axios from "axios";
+import {ProductValidator} from "@app/src/validator/product.validator";
 
 const handler =
     nc(ErrorHandler);
@@ -26,7 +27,9 @@ const handler =
 // }
 
 handler
-.post(async (req,res)=> {
+.post(
+    ProductValidator.create,
+    async (req,res)=> {
     try{
         return res.json({
             ...req.body

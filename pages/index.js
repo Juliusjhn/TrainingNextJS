@@ -2,6 +2,9 @@ import axios from "axios";
 import CardComponent from "@app/src/components/card.component";
 
 export default function Home(props){
+    console.log({
+        props
+    })
   return (
       <div className={'h-screen w-full bg-white bg-fixed'}>
         <h1 className="text-warning">Home</h1>
@@ -47,6 +50,7 @@ export default function Home(props){
 
 
 export async function getServerSideProps(ctx){
+    console.log(ctx);
     let query = ctx.query;
     let params = {
         page:1,

@@ -9,4 +9,14 @@ class ProductController
         this.tableName = 'Product'
     }
 
+
+    async getImageProduct(){
+        let id = 1;
+
+        this.tableName = 'product_image';
+        this.key = 'productId'
+        this.value = id
+        return await this._detail();
+    }
+
 }

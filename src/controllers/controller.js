@@ -12,12 +12,16 @@ export default class Controller {
         this.fields = props?.fields ?? null
         this.key = props?.key ?? undefined
         this.value = props?.value ?? null
+        this.where = props?.where ?? {}
         this.tableName = props?.tableName ?? undefined
         BigInt.prototype.toJSON = function(){
             return this.toString();
         }
     }
 
+    async getView(){
+        return await this.prisma.$executeRaw(`SELECT VIEW ASDASD`)
+    }
 
     async _create(){
         try{
@@ -42,4 +46,43 @@ export default class Controller {
             return [ err, null ]
         }
     }
+
+    async _detail(){
+
+        try{
+            if(!isNaN(Number(this.value))){
+                this.value = Number(this.value);
+            }
+
+            let condition = {}
+
+            if(Object.keys(this.where).length === 0){
+                condition = {
+                    where: {
+                        [this.key]: {
+                            contains: this.value,
+                            mode: 'insensitive'
+                        }
+                    }
+                }
+            }else{
+                condition = {
+                    where: {
+                        ...this.where
+                    }
+                }
+            }
+
+            const response = await this.prisma[this.tableName]
+                .findMany(condition);
+
+            return [ null, response]
+
+
+        }catch(err){
+            return [ err, null]
+        }
+
+    }
+
 }

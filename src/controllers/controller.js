@@ -108,6 +108,11 @@ export default class Controller {
 
     async _list(){
 
+
+        console.log({
+            query: this.req.query
+        })
+
         const {
             pagination,
             prisma

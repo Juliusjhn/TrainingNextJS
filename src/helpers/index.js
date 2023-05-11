@@ -12,11 +12,11 @@ export default class Helpers{
         let initialObject = {
             pagination: {
                 page:0,
-                limit:10
+                limit:4
             },
             prisma: {
                 skip:0,
-                take: 10
+                take: 4
             }
         }
         try{

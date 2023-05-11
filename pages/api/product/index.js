@@ -68,7 +68,9 @@ handler
                 query,
                 data
             }
-            ] = await new ProductController({req})
+            ] = await new ProductController({
+                req
+            })
                     ._list();
 
             if(err) {
@@ -76,7 +78,7 @@ handler
                 return res.json({
                     error:true,
                     message: err?.message
-                })
+                });
             }
 
             res.status(200)

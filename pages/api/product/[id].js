@@ -52,5 +52,45 @@ handler
             })
         }
     })
+    .delete(
+        async (
+            req,
+            res
+        )=> {
+            try{
+                const [ err, data ] =
+                await new ProductController({
+                    key: "id",
+                    value: req.query?.id
+                })._delete();
+
+                if(err){
+                    res.status(400);
+                    return res.json({
+                        error:true,
+                        message: err?.message,
+                    })
+                }
+
+                if(!data){
+                    res.status(404);
+                    return res.json({
+                        error: true,
+                        message: "Product not found!"
+                    })
+                }
+
+                res.status(201);
+                return res.json({});
+
+            }catch(err){
+                res.status(500)
+                return res.json({
+                    error:true,
+                    message: err?.message
+                })
+            }
+
+    })
 
 export default handler

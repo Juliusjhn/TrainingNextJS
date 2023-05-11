@@ -59,10 +59,7 @@ export default class Controller {
             if(Object.keys(this.where).length === 0){
                 condition = {
                     where: {
-                        [this.key]: {
-                            contains: this.value,
-                            mode: 'insensitive'
-                        }
+                        [this.key]: this.value
                     }
                 }
             }else{
@@ -74,7 +71,7 @@ export default class Controller {
             }
 
             const response = await this.prisma[this.tableName]
-                .findMany(condition);
+                .findFirst(condition);
 
             return [ null, response]
 
@@ -83,6 +80,51 @@ export default class Controller {
             return [ err, null]
         }
 
+    }
+
+    async _delete(){
+        try{
+            if(!isNaN(Number(this.value))){
+                this.value = Number(this.value);
+            }
+            const [ err, data ] = await this._detail();
+
+            if(err) return [new Error(err?.message),null]
+            if(!data) return [null, null];
+
+            await this.prisma[this.tableName]
+                .delete({
+                    where: {
+                        [this.key]: this.value
+                    }
+                })
+
+            return [null, data];
+        }catch(err){
+            return [ err, null ]
+        }
+    }
+
+    async _list(){
+        let result = {
+            query: {
+                ...this.req?.query
+            },
+            pagination : {
+                page:1,
+                limit:10,
+                total:0,
+                maxPage:0,
+            },
+            data: []
+        }
+        try{
+
+
+
+        }catch(err){
+            return [ err, ]
+        }
     }
 
 }

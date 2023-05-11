@@ -2,6 +2,7 @@ import nc from 'next-connect';
 import ErrorHandler from "@app/src/handlers/error.handler";
 import axios from "axios";
 import {ProductValidator} from "@app/src/validator/product.validator";
+import ProductController from "@app/src/controllers/product.controller";
 
 const handler =
     nc(ErrorHandler);
@@ -31,8 +32,22 @@ handler
     ProductValidator.create,
     async (req,res)=> {
     try{
+
+        const [ err, data ] = await new ProductController({
+            fields: req.body?.product
+        })._create()
+
+        if(err){
+            res.status(400)
+            return res.json({
+                error:true,
+                message: err?.message
+            })
+        }
+
         return res.json({
-            ...req.body
+            error:false,
+            data: data
         })
     }catch(err){
         res.status(500)

@@ -8,7 +8,7 @@ const create =
                 name: Joi.string().required(),
                 description: Joi.string()
                     .min(10)
-                    .max(250),
+                    .max(250).required(),
                 price: Joi.number().required()
             }).required()
         })

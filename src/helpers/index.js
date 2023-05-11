@@ -53,10 +53,8 @@ export default class Helpers{
             Reflect.set(
                 initialObject.prisma,
                 'skip',
-                limit * ( page > 1 ? (page - 1) * limit : 0)
-
+                limit * ( page > 0 ? page - 1 : 0)
             )
-
             return {...initialObject}
         }catch(err){
             return {...initialObject}

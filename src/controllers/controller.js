@@ -1,4 +1,5 @@
 import {PrismaClient} from "@prisma/client";
+import Helpers from "@app/src/helpers";
 
 export default class Controller {
 
@@ -106,6 +107,12 @@ export default class Controller {
     }
 
     async _list(){
+
+        const {
+            pagination,
+            prisma
+        } = Helpers.Pagination(this.req.query)
+
         let result = {
             query: {
                 ...this.req?.query
@@ -118,12 +125,29 @@ export default class Controller {
             },
             data: []
         }
+
+        let condition = {
+            ...prisma,
+        }
+
         try{
 
+            const total = await this.prisma[this.tableName].count();
+            const data = await this.prisma[this.tableName].findMany(condition);
 
 
+            Reflect.set(
+                result.pagination,
+                'maxPage',
+                Math.ceil(total/pagination.limit)
+            )
+
+            Reflect.set(result.pagination,'total',total);
+            Reflect.set(result,'data',data);
+
+            return [null, {...result}]
         }catch(err){
-            return [ err, ]
+            return [ err, null]
         }
     }
 
